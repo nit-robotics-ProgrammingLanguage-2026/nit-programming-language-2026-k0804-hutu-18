@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-#include <stdio.h>
-
 void reverse_bits(int *input, int *output)
 {
     int number = *input;
