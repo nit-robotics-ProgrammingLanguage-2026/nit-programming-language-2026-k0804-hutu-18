@@ -1,3 +1,37 @@
 #include <stdio.h>
-void g(int *p,int *q){int t=*p,r=0;while(t>0){r=(r<<1)|(t&1);t>>=1;}*q=r;}
-int main(void){int n,m;scanf("%d",&n);if(n<=0){printf("NG");return 0;}g(&n,&m);printf("%d,%d",n,m);return 0;}
+
+#include <stdio.h>
+
+void reverse_bits(int *input, int *output)
+{
+    int number = *input;
+    int reversed = 0;
+
+    // 2進数のビットを下位から取り出して逆順に並べる
+    while (number > 0) {
+        reversed = (reversed << 1) | (number & 1);
+        number >>= 1;
+    }
+
+    // 反転した結果をポインタを使って渡す
+    *output = reversed;
+}
+
+int main(void)
+{
+    int input_number, output_number;
+
+    scanf("%d", &input_number);
+
+    // 入力が0以下の場合はNGと表示する
+    if (input_number <= 0) {
+        printf("NG");
+        return 0;
+    }
+
+    reverse_bits(&input_number, &output_number);
+
+    printf("%d,%d", input_number, output_number);
+
+    return 0;
+}
